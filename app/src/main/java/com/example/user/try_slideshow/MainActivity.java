@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     SlideShowPagerAdapter slideShowPagerAdapter;
     ArrayList<ImageModel> mImages;
     Handler handler;
-    int slideIndex = 0;
     int MSG_SHOW_SLIDE = 1000;
 
     @Override
@@ -51,11 +50,6 @@ public class MainActivity extends AppCompatActivity {
                     handler.removeMessages(MSG_SHOW_SLIDE);
                     slideViewPager.setCurrentItem(slideViewPager.getCurrentItem()+1);
                 }
-//                if(slideIndex<mImages.size()) {
-//                    handler.removeMessages(MSG_SHOW_SLIDE);
-//                    slideViewPager.setCurrentItem(slideIndex);
-//                }
-//                slideIndex++;
                 sendEmptyMessageDelayed(MSG_SHOW_SLIDE,7000);
             }
         };
@@ -65,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         //start the slideshow
-        handler.sendEmptyMessage(slideIndex);
+        handler.sendEmptyMessage(MSG_SHOW_SLIDE);
     }
 
 
